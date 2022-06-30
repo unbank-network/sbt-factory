@@ -9,7 +9,7 @@ contract FenrirIpfsNft is ERC721 {
     Counters.Counter private _tokenIds;
     mapping(string => uint8) public hashes;
 
-    constructor() public ERC721("Fenrir NFT", "fenrirNFT") {
+    constructor() public ERC721("SBound NFT", "SNFT") {
         _setBaseURI("ipfs://");
     }
 

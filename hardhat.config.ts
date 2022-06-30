@@ -1,10 +1,10 @@
-import "@nomiclabs/hardhat-waffle";
-import { HardhatUserConfig } from "hardhat/config";
+require("@nomiclabs/hardhat-ethers");
+require("@openzeppelin/hardhat-upgrades");
+require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
 
-import * as dotenv from "dotenv";
-dotenv.config({ path: __dirname + "/.env" });
-
-const config: HardhatUserConfig = {
+module.exports = {
   solidity: "0.6.12",
   networks: {
     bsc: {
@@ -19,7 +19,12 @@ const config: HardhatUserConfig = {
       url: process.env.bscRpc || "https://rpc-testnet.kcc.network",
       accounts: [process.env["PRIVATE_KEY"]],
     },
+    mumbai: {
+      url: process.env.TEST_ALCHEMY_KEY,
+      accounts: [process.env.TEST_PRIVATE_KEY],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.POLYGONSCAN_API_KEY,
   },
 };
-
-export default config;
